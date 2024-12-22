@@ -11,6 +11,7 @@ export default function MixesSection() {
 
   return (
     <>
+      <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Mixed for you</h1>
       <div className="px-6 flex overflow-x-auto whitespace-nowrap gap-4">
         {mixes.map((mix) => (
           <div key={mix.id} className="flex flex-col">

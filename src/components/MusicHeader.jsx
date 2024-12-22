@@ -35,7 +35,6 @@ export default function MusicHeader() {
             </button>
           ))}
         </div>
-        <h1 className="text-white text-xl p-4 ml-2 text-left font-semibold">Mixed for you</h1>
         <MixesSection />
       </div>
       <div className="mt-8">

@@ -49,7 +49,7 @@ export default function Menu() {
       {/* Overlay */}
       {menuOpen && (
         <div
-        className="fixed inset-0 bg-black opacity-50 z-1 transition-opacity duration-300"
+        className="fixed inset-0 bg-black opacity-50 transition-opacity duration-500 z-1"
         onClick={toggleMenu}
         style={{ opacity: menuOpen ? 0.5 : 0 }}
       ></div>
