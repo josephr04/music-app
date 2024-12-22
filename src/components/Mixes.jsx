@@ -11,15 +11,18 @@ export default function MixesSection() {
 
   return (
     <>
-      <div className="px-4 flex overflow-x-auto whitespace-nowrap">
+      <div className="px-6 flex overflow-x-auto whitespace-nowrap gap-4">
         {mixes.map((mix) => (
-          <div
-            key={mix.id}
-            className={`mx-2 px-16 py-16 rounded-xl text-center font-semibold text-white shadow-md cursor-pointer transition-all ${
-              mix.selected ? 'bg-white text-black' : 'bg-slate-900 hover:bg-slate-700'
-            }`}
-          >
-            {mix.name}
+          <div key={mix.id} className="flex flex-col">
+            <div
+              className={`w-40 h-40 rounded-lg text-center font-semibold text-white shadow-md cursor-pointer transition-all ${
+                mix.selected ? 'bg-white text-black' : 'bg-green-500 hover:bg-slate-700'
+              }`}
+            >
+              <span className="flex items-center justify-center h-full">{mix.name}</span>
+            </div>
+            <h1 className="text-left mt-2 text-white text-sm font-medium"><span>{`${mix.name} - Name`}</span></h1>
+            <h2 className="text-left text-slate-500 text-sm">Artist names</h2>
           </div>
         ))}
       </div>

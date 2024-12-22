@@ -46,6 +46,15 @@ export default function Menu() {
 
   return (
     <>
+      {/* Overlay */}
+      {menuOpen && (
+        <div
+        className="fixed inset-0 bg-black opacity-50 z-1 transition-opacity duration-300"
+        onClick={toggleMenu}
+        style={{ opacity: menuOpen ? 0.5 : 0 }}
+      ></div>
+      )}
+
       {/* Hamburger icon */}
       <button
         onClick={toggleMenu}
