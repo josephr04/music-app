@@ -3,6 +3,7 @@ import Menu from './components/Menu'
 import PlayerBar from './components/PlayerBar'
 import MusicHeader from './components/MusicHeader'
 import QuickPicks from './components/QuickPicks'
+import MixCard from './components/MixCard'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Menu />
       <MusicHeader />
       <QuickPicks />
+      <MixCard />
       <h1 className="text-2xl font-bold mb-4 mt-4 text-center">🚧 Under construction 🚧</h1>
       <PlayerBar />
     </div>
