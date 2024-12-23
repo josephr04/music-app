@@ -14,8 +14,8 @@ export default function QuickPicks() {
                     <div key={song.id} className="flex items-center w-64 cursor-pointer space-x-4 mr-6">
                         <div className="w-16 h-16 flex-shrink-0 rounded-lg bg-green-500 hover:bg-slate-700 shadow-md transition-all"></div>
                         <div className='flex flex-col'>
-                            <h1 className="text-left text-white text-normal font-medium w-44 overflow-hidden text-ellipsis">{song.name}</h1>
-                            <h2 className="text-left text-slate-500 text-sm w-44 overflow-hidden text-ellipsis">Artist name</h2>
+                            <h1 className="text-left text-white text-base font-medium w-44 overflow-hidden text-ellipsis">{song.name}</h1>
+                            <h2 className="text-left text-slate-500 text-base w-44 overflow-hidden text-ellipsis">Artist name</h2>
                         </div>
                     </div>
                 ))}

@@ -30,8 +30,8 @@ export default function MixCard() {
                             <div key={song.id} className='flex space-x-6 items-center'>
                                 <div className='w-16 h-16 flex-shrink-0 rounded-lg bg-green-500 hover:bg-slate-700 shadow-md transition-all'></div>
                                 <div className='flex flex-col'>
-                                    <h1 className="text-white text-normal font-medium overflow-hidden text-ellipsis">{song.name}</h1>
-                                    <h2 className='text-left text-slate-800 text-sm overflow-hidden text-ellipsis'>{song.artist}</h2>
+                                    <h1 className="text-white text-base font-medium overflow-hidden text-ellipsis">{song.name}</h1>
+                                    <h2 className='text-slate-800 text-base overflow-hidden text-ellipsis'>{song.artist}</h2>
                                 </div>
                             </div>
                         ))}

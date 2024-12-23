@@ -22,8 +22,8 @@ export default function MixesSection() {
             >
               <span className="flex items-center justify-center h-full">{mix.name}</span>
             </div>
-            <h1 className="text-left mt-2 text-white text-sm font-medium"><span>{`${mix.name} - Name`}</span></h1>
-            <h2 className="text-left text-slate-500 text-sm">Artist names</h2>
+            <h1 className="text-left mt-2 text-white text-base font-medium"><span>{`${mix.name} - Name`}</span></h1>
+            <h2 className="text-left text-slate-500 text-base">Artist names</h2>
           </div>
         ))}
       </div>
