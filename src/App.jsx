@@ -8,13 +8,13 @@ import Artist from './components/Artists'
 
 function App() {
   return (
-    <div className="bg-slate-950 min-h-screen flex flex-col text-white">
+    <div className="min-h-screen flex flex-col text-white">
       <Menu />
       <MusicHeader />
       <QuickPicks />
       <MixCard />
       <Artist />
-      <h1 className="text-2xl font-bold mb-4 mt-4 text-center">🚧 Under construction 🚧</h1>
+      <h1 className="text-2xl font-bold mb-24 mt-8 text-center">🚧 Under construction 🚧</h1>
       <PlayerBar />
     </div>
   )
