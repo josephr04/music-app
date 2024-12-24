@@ -1,6 +1,5 @@
-import react from 'react'
 
-export default function MixCard() {
+export function MixCard() {
     const mixes = Array.from({ length: 3 }, (_, i) => ({
         id: i + 1,
         name: `mix ${i + 1} - Sample Name`

@@ -1,6 +1,5 @@
-import react from 'react'
 
-export default function QuickPicks() {
+export function QuickPicks() {
     const songs = Array.from({ length: 24 }, (_, i) => ({
         id: i + 1,
         name: `Song ${i + 1} - Sample Name`

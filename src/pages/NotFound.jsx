@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function NotFound() {
+export function NotFound() {
     const { mixId } = useParams();
 
     useEffect(() => {

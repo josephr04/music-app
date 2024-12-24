@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function PlayerBar() {
+export function PlayerBar() {
   const [expanded, setExpanded] = useState(false);
 
   const togglePlayerBar = () => {

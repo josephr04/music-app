@@ -1,5 +1,5 @@
 
-export default function Artist() {
+export function Artist() {
 
     const artists = Array.from({ length: 5 }, (_, i) => ({
         id: i + 1,

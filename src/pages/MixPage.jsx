@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function Mixpage() {
+export function MixPage() {
     const { mixId } = useParams();
 
     useEffect(() => {

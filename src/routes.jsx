@@ -1,14 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MainLayout } from '@components/layout/MainLayout';
+import { Home } from '@pages/Home';
+import { MixPage } from '@pages/MixPage';
+import { NotFound } from '@pages/NotFound';
 
-// Layout
-import MainLayout from './components/MainLayout';
-
-// Pages
-import Home from './pages/Home';
-import MixPage from './pages/MixPage';
-import NotFound from './pages/NotFound';
-
-const AppRoutes = () => {
+export const AppRoutes = () => {
   return (
     <Router>
       <Routes>
@@ -21,5 +17,3 @@ const AppRoutes = () => {
     </Router>
   );
 };
-
-export default AppRoutes;

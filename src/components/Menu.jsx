@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function Menu() {
+export function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 

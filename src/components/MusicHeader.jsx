@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MixesSection from './Mixes';
+import { MixesSection } from './Mixes';
 
-export default function MusicHeader() {
+export function MusicHeader() {
   const [selectedGroup, setSelectedGroup] = useState('all');
 
   const musicGroups = [

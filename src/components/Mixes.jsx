@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function MixesSection() {
+export function MixesSection() {
   const mixes = [
     { id: 1, name: 'Mix 1' },
     { id: 2, name: 'Mix 2' },

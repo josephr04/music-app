@@ -1,12 +1,11 @@
 import React from 'react'
-import Menu from '/src/components/Menu'
-import PlayerBar from '/src/components/PlayerBar'
-import MusicHeader from '/src/components/MusicHeader'
-import QuickPicks from '/src/components/QuickPicks'
-import MixCard from '/src/components/MixCard'
-import Artist from '/src/components/Artists'
+import { Menu } from '@components/Menu'
+import { MusicHeader } from '@components/MusicHeader'
+import { QuickPicks } from '@components/QuickPicks'
+import { MixCard } from '@components/MixCard'
+import { Artist } from '@components/Artists'
 
-export default function Home() {
+export function Home() {
   return (
     <div className="min-h-screen flex flex-col text-white">
       <Menu />
