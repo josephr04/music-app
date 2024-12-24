@@ -15,7 +15,7 @@ export function MixesSection() {
       <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Mixed for you</h1>
       <div className="px-6 flex overflow-x-auto whitespace-nowrap gap-4">
         {mixes.map((mix) => (
-            <Link key={mix.id} to={`/mix/${mix.id}`} className="flex flex-col">
+            <Link key={mix.id} to={`/playlist/${encodeURIComponent(mix.name)}`} className="flex flex-col">
               <div
                 className={`w-40 h-40 rounded-lg text-center font-semibold text-white shadow-md cursor-pointer transition-all ${
                   mix.selected ? 'bg-white text-black' : 'bg-green-500 hover:bg-slate-700'

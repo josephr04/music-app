@@ -10,7 +10,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="mix/:mixId" element={<MixPage />} />
+            <Route path="playlist/:mixName" element={<MixPage />} />
             <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
