@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { MixesSection } from '@components/Mixes'
 
 export function MixPage() {
     const { mixName } = useParams();
@@ -14,7 +15,7 @@ export function MixPage() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+    }, [mixName]);
 
     const handleBack = () => {
         navigate(-1);
@@ -32,7 +33,7 @@ export function MixPage() {
                 <span className="flex items-center justify-center h-full">{dMixName}</span>
             </div>
             <h1 className="ml-auto mr-auto mt-6 text-3xl font-bold">{dMixName}</h1>
-            <h2 className="ml-auto mr-auto mt-2 text-base font-base text-slate-400">4 songs</h2>
+            <h2 className="ml-auto mr-auto mt-2 text-base font-base text-slate-400">5 songs</h2>
             <div className='flex ml-auto mr-auto mt-4'>
                 <div className='flex items-center justify-center w-16 h-16 bg-green-400 rounded-full'>
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-player-play"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" /></svg>
@@ -48,6 +49,10 @@ export function MixPage() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className='mt-8 mb-24 ml-1'>
+                <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Related playlists</h1>
+                <MixesSection />
             </div>
         </div>
     );

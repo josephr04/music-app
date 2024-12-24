@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 export function MixCard() {
     const mixes = Array.from({ length: 3 }, (_, i) => ({
@@ -16,7 +17,7 @@ export function MixCard() {
     return (
         <div className='flex flex-col p-6 w-full space-y-10'>
             {mixes.map((mix, index) => (
-                <div key={mix.id} className={`flex flex-col w-full h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}>
+                <Link key={mix.id} to={`/playlist/${encodeURIComponent(mix.name)}`} className={`flex flex-col w-full h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}>
                     <div className='flex items-center space-x-8 text-wrap pb-3'>
                         <div className='w-36 h-36 rounded-lg bg-green-500 shadow-md flex-shrink-0'></div>
                         <div className='flex flex-col'>
@@ -35,7 +36,7 @@ export function MixCard() {
                             </div>
                         ))}
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
     );
