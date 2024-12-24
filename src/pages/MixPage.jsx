@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MixesSection } from '@components/Mixes'
 
 export function MixPage() {
@@ -7,11 +7,26 @@ export function MixPage() {
     const dMixName = decodeURIComponent(mixName);
     const navigate = useNavigate();
 
+    const [showHeader, setShowHeader] = useState(false);
+
     const songs = Array.from({ length: 5 }, (_, i) => ({
         id: i + 1,
         name: `Song ${i + 1} - Sample Name`,
         artist: `Artist ${i + 1}`
     }));
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 200) { // Mostrar después de 200px de scroll
+                setShowHeader(true);
+            } else {
+                setShowHeader(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -23,7 +38,21 @@ export function MixPage() {
 
     return (
         <div className="flex flex-col min-h-screen bg-slate-950  text-white">
-            <div className="fixed pt-4">
+            <div
+                className={`fixed top-0 left-0 right-0 z-3 h-20 flex items-center px-4 bg-green-300 shadow-md 
+                transition-all duration-200 ease-in-out ${
+                    showHeader ? 'opacity-100 transition-opacity' : 'opacity-0 transition-opacity'
+                }`}
+            >
+                <h1
+                    className={`ml-16 mr-auto mt-6 text-xl font-bold transition-opacity duration-300 ease-in-out ${
+                        showHeader ? 'opacity-100 delay-100' : 'opacity-0'
+                    }`}
+                >
+                    {dMixName}
+                </h1>       
+            </div>
+            <div className="fixed pt-6">
                 {/* Arrow button */}
                 <button onClick={handleBack} className="z-3 p-4">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>

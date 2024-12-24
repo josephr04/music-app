@@ -49,10 +49,11 @@ export function Menu() {
       {/* Overlay */}
       {menuOpen && (
         <div
-        className="fixed inset-0 bg-black opacity-50 transition-opacity duration-500 z-1"
-        onClick={toggleMenu}
-        style={{ opacity: menuOpen ? 0.5 : 0 }}
-      ></div>
+            className={`fixed inset-0 bg-black z-1 transition-opacity duration-500 ease-in-out ${
+                menuOpen ? 'opacity-50' : 'opacity-0'
+            }`}
+            onClick={toggleMenu}
+        ></div>
       )}
 
       {/* Hamburger icon */}
