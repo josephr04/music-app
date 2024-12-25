@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Slider } from '@components/Slider'
+import { PlayPauseButton } from '@components/PlayPauseButton';
 
 export function PlayerBar() {
   const [expanded, setExpanded] = useState(false);
@@ -26,7 +27,7 @@ export function PlayerBar() {
   return (
     <div
       className={`fixed bottom-0 left-0 w-full bg-gray-900 transition-all duration-500 z-4 ${
-        expanded ? 'h-screen' : 'h-16'
+        expanded ? 'h-screen' : 'h-20'
       }`}
     >
 
@@ -37,12 +38,32 @@ export function PlayerBar() {
         {!expanded ? (
           <>
             {/* Mini Player */}
-            <div className="flex items-center mt-2 cursor-pointer">
-              <span className="text-white">🎵</span>
-              <span className="text-white ml-2">Now Playing</span>
+            <div className="w-full flex flex-col justify-center">
+              <div className="w-full">
+                <Slider 
+                  value={50} 
+                  onChange={(val) => console.log('Slider Value:', val)}
+                  mode="mini"
+                />
+              </div>
+              <div className='flex space-x-20 items-center justify-center mt-4'>
+                <div onClick={togglePlayerBar} className='flex space-x-6'>
+                  <div className="w-12 h-12 flex-shrink-0 rounded-md bg-green-500 hover:bg-slate-700 shadow-md transition-all"></div>
+                  <div className='flex flex-col'>
+                      <h1 className="text-left text-white text-base font-medium w-44 overflow-hidden text-ellipsis">Song Name</h1>
+                      <h2 className="text-left text-slate-500 text-base w-44 overflow-hidden text-ellipsis">Artist name</h2>
+                  </div>
+                </div>
+                <div>
+                  <PlayPauseButton isPlaying={isPlaying} expanded={expanded} fill="white" iconSize={24} 
+                    onToggle={(e) => {
+                      e.stopPropagation();
+                      togglePlayPause();
+                    }}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex-grow mx-4 bg-gray-600 h-1 rounded-full"></div>
-            <button className="text-white">⏯️</button>
           </>
         ) : (
           <>
@@ -62,7 +83,11 @@ export function PlayerBar() {
                 <h1 className="text-lg mr-56 text-slate-400">Artist Name</h1>
               </div>
               <div className="w-3/4 h-2 mt-4">
-                <Slider />
+                <Slider 
+                  value={50}
+                  onChange={(val) => console.log('Slider Value:', val)}
+                  mode='full'
+                />
               </div>
               {/* Control panel*/}
               <div className="flex items-center space-x-4 mt-12">
@@ -72,10 +97,7 @@ export function PlayerBar() {
                 </div>
                 {/* play/pause button */}
                 <div onClick={togglePlayPause} className='flex items-center justify-center w-20 h-20 bg-white rounded-full'>
-                  {isPlaying ? (
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="black"  className="icon icon-tabler icons-tabler-filled icon-tabler-player-play"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" /></svg>
-                  ) : (
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="black"  className="icon icon-tabler icons-tabler-filled icon-tabler-player-pause"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" /><path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" /></svg>                  )}                
+                  <PlayPauseButton isPlaying={isPlaying} onToggle={togglePlayPause} expanded={expanded} fill="black" iconSize={36} />
                 </div>
                 {/* Next button */}
                 <div className='flex items-center justify-center w-14 h-14 hover:bg-slate-800 rounded-full'>

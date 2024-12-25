@@ -1,65 +1,83 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react';
 
-export function Slider({ percentage = 0, onChange }) {
-  const [position, setPosition] = useState(percentage)
-  const [marginLeft, setMarginLeft] = useState(0)
-  const [progressBarWidth, setProgressBarWidth] = useState(0)
+export function Slider({ value = 0, onChange, mode = 'full' }) {
+  const [sliderValue, setSliderValue] = useState(value);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const sliderRef = useRef();
 
-  const rangeRef = useRef()
-  const thumbRef = useRef()
-
+  // Updates the value when it's changed outside (prop `value`)
   useEffect(() => {
-    const rangeWidth = rangeRef.current.getBoundingClientRect().width
-    const thumbWidth = thumbRef.current.getBoundingClientRect().width
-    const centerThumb = (thumbWidth / 100) * position * -1
-    const centerProgressBar =
-      thumbWidth + (rangeWidth / 100) * position - (thumbWidth / 100) * position
-    setMarginLeft(centerThumb)
-    setProgressBarWidth(centerProgressBar)
-  }, [position])
+    setSliderValue(value);
+  }, [value]);
 
+  // handle changes
   const handleChange = (e) => {
-    const value = parseFloat(e.target.value)
-    setPosition(value)
-    if (onChange) {
-      onChange(value)
-    }
-  }
+    const newValue = parseFloat(e.target.value);
+    setSliderValue(newValue);
+    if (onChange) onChange(newValue);
+  };
+
+  const handleMouseDown = () => {
+    setIsDragging(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   return (
-    <div className="relative w-full">
-      {/* Background Bar */}
-      <div className="absolute top-1/2 left-1/2 w-[99%] h-[3px] bg-slate-400 rounded-md transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-      
-      {/* Progress Bar */}
+    <div
+      className="relative w-full flex items-center"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* background bar */}
       <div
-        className="absolute top-1/2 bg-white h-[4px] rounded-md transform -translate-y-1/2 pointer-events-none"
-        style={{
-          width: `${progressBarWidth}px`
-        }}
-      ></div>
-      
-      {/* Thumb */}
-      <div
-        ref={thumbRef}
-        className="absolute top-1/2 w-4 h-4 bg-white rounded-full shadow-md transform -translate-y-1/2"
-        style={{
-          left: `${position}%`,
-          marginLeft: `${marginLeft}px`
-        }}
+        className={`absolute w-full ${
+          mode === 'mini' ? 'h-[2px]' : 'h-[4px]'
+        } bg-slate-400 rounded-md`}
       ></div>
 
-      {/* Range Input */}
+      {/* progress bar */}
+      <div
+        className={`absolute ${
+          mode === 'mini' ? 'h-[2px]' : 'h-[4px]'
+        } bg-white rounded-md`}
+        style={{ width: `${sliderValue}%` }}
+      ></div>
+
+      {/* play button */}
+      {(mode === 'full' || isDragging || isHovered) && (
+        <div
+          className={`absolute ${
+            mode === 'mini' ? 'w-3 h-3' : 'w-4 h-4'
+          } bg-white rounded-full shadow-md cursor-pointer`}
+          style={{ left: `${sliderValue}%`, transform: 'translateX(-50%)' }}
+        ></div>
+      )}
+
+      {/* Input Invisible */}
       <input
+        ref={sliderRef}
         type="range"
-        value={position}
-        ref={rangeRef}
-        step="0.01"
         min="0"
         max="100"
-        className="w-full h-2 opacity-0 cursor-pointer"
+        value={sliderValue}
         onChange={handleChange}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        className="w-full h-1 opacity-0 cursor-pointer absolute"
       />
     </div>
-  )
+  );
 }

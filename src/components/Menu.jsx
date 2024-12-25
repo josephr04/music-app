@@ -111,7 +111,7 @@ export function Menu() {
               </li>
             ))}
           </ul>
-          <h2 className='text-xs text-center'>© 2024 Joseph Rosas. All rights reserved.</h2>
+          <h2 className='text-xs text-center mb-4'>© 2024 Joseph Rosas. All rights reserved.</h2>
         </div>
       </div>
     </>
