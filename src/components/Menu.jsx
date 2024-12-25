@@ -44,6 +44,16 @@ export function Menu() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  
+    return () => document.body.classList.remove('no-scroll');
+  }, [menuOpen]);  
+
   return (
     <>
       {/* Overlay */}
