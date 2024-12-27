@@ -2,13 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function MixesSection() {
-  const mixes = [
-    { id: 1, name: 'Mix 1' },
-    { id: 2, name: 'Mix 2' },
-    { id: 3, name: 'Mix 3' },
-    { id: 4, name: 'Mix 4' },
-    { id: 5, name: 'Mix 5' },
-  ];
+  const mixes = Array.from({ length: 5 }, (_, i) => ({
+    id: i + 1,
+    name: `Mix ${i + 1}`
+  }));
 
   return (
     <>
