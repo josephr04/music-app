@@ -13,7 +13,6 @@ html, body, #root {
 
 .no-scroll {
     overflow: hidden;
-    height: 100%;
     touch-action: none;
 }
   
