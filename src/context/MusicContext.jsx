@@ -8,6 +8,9 @@ export const MusicProvider = ({ children }) => {
   const [mixes, setMixes] = useState([]);
   const [songs, setSongs] = useState([]);
   const [selectedMix, setSelectedMix] = useState(null);
+  const [audio, setAudio] = useState(null); // Estado para el objeto de audio
+  const [isPlaying, setIsPlaying] = useState(false); // Estado para saber si está sonando
+  const [currentSong, setCurrentSong] = useState(null); // Estado para la canción actual
   const cloudId = "https://d3191cx8othwak.cloudfront.net/";
 
   // Mixes fetch
@@ -24,6 +27,15 @@ export const MusicProvider = ({ children }) => {
     const fetchSongs = async () => {
       const data = await getSongs();
       setSongs(data);
+      
+      if (data.length > 0) {
+        setCurrentSong({ 
+          title: data[0].title, 
+          artist: data[0].artist, 
+          image: cloudId + data[0].image,
+          file: cloudId + data[0].file
+        });
+      }
     };
     fetchSongs();
   }, []);
@@ -39,8 +51,40 @@ export const MusicProvider = ({ children }) => {
     return songs.filter((song) => song.mix === mix);
   };
 
+  // Function to play a song
+  const playSong = (songFile, songTitle, songArtist, songImage) => {
+    if (audio) {
+      audio.pause();
+    }
+
+    const newSongImage = cloudId + songImage;
+    const newAudio = new Audio(cloudId + songFile);
+    setAudio(newAudio);
+    setCurrentSong({ title: songTitle, artist: songArtist, image: newSongImage });
+    newAudio.play();
+    setIsPlaying(true);
+
+    newAudio.onended = () => {
+      setIsPlaying(false);
+    };
+  };
+
+  // Function to play and pause song
+  const playPause = () => {
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <MusicContext.Provider value={{ mixes, songs, selectedMix, selectMix, getSongsByMix,cloudId}}>
+    <MusicContext.Provider value={{
+      mixes, songs, selectedMix, selectMix, getSongsByMix,
+      playSong, playPause, isPlaying, currentSong,
+      cloudId, setCurrentSong
+    }}>
       {children}
     </MusicContext.Provider>
   );
