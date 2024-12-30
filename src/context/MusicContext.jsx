@@ -40,7 +40,7 @@ export const MusicProvider = ({ children }) => {
   };
 
   return (
-    <MusicContext.Provider value={{ mixes, selectedMix, selectMix, getSongsByMix,cloudId}}>
+    <MusicContext.Provider value={{ mixes, songs, selectedMix, selectMix, getSongsByMix,cloudId}}>
       {children}
     </MusicContext.Provider>
   );

@@ -1,10 +1,12 @@
 
 export function Artist() {
 
-    const artists = Array.from({ length: 5 }, (_, i) => ({
-        id: i + 1,
-        name: `Artist ${i + 1}`
-    }));
+    const artists = [
+        { id: 1, name: "Alan Walker", image: "src/assets/images/artists/alan-walker.webp"},
+        { id: 2, name: "The Weeknd", image: "src/assets/images/artists/the-weeknd.webp" },
+        { id: 3, name: "Mitski", image: "src/assets/images/artists/mitski.webp" },
+        { id: 4, name: "Inabakumori", image: "src/assets/images/artists/inabakumori.webp" }
+      ];
 
     return (
         <>
@@ -14,12 +16,16 @@ export function Artist() {
                 <div key={artist.id} className="flex flex-col">
                     <div
                         className={`w-40 h-40 rounded-full text-center font-semibold text-white shadow-md cursor-pointer transition-all ${
-                            artist.selected ? 'bg-white text-black' : 'bg-green-500 hover:bg-slate-700'
+                            artist.selected ? 'bg-white text-black' : ' hover:bg-slate-700'
                         }`}
+                        style={{
+                            backgroundImage: `url(${artist.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                        }}
                     >
-                        <span className="flex items-center justify-center h-full">{artist.name}</span>
                     </div>
-                    <h1 className="text-center mt-2 text-white text-base font-medium"><span>{`${artist.name} - Name`}</span></h1>
+                    <h1 className="text-center mt-2 text-white text-base font-medium"><span>{`${artist.name}`}</span></h1>
                 </div>
                 ))}
             </div>
