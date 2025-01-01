@@ -6,7 +6,7 @@ import { useMusic } from '@context/MusicContext';
 export function MixPage({mix}) {
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const { cloudId, getSongsByMix } = useMusic();
+    const { cloudId, getSongsByMix, playSong } = useMusic();
     const [songs, setSongs] = useState([]);
     const [showHeader, setShowHeader] = useState(false);
 
@@ -76,7 +76,7 @@ export function MixPage({mix}) {
             </div>
             <div className='flex flex-col ml-7 mr-auto mt-8 space-y-5'>
                 {songs.map((song) =>(
-                    <div key={song.id} className='flex space-x-6 items-center'>
+                    <div key={song.id} onClick={() => playSong(song.file, song.title, song.artist, song.image)} className='flex space-x-6 items-center'>
                         <div className='w-16 h-16 flex-shrink-0 rounded-lg hover:bg-slate-700 shadow-md transition-all'
                             style={{
                                 backgroundImage: `url(${cloudId + song.image})`,
