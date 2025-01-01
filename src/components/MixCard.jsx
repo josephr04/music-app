@@ -47,10 +47,10 @@ export function MixCard() {
                                         }}
                                     ></div>
                                     <div className='flex flex-col'>
-                                        <h1 className="text-white text-base font-medium overflow-hidden text-ellipsis">
+                                        <h1 className="text-white text-base w-44 font-medium overflow-hidden whitespace-nowrap text-ellipsis">
                                             {song.title}
                                         </h1>
-                                        <h2 className='text-slate-400 text-base overflow-hidden text-ellipsis'>
+                                        <h2 className='text-slate-400 text-base w-44 overflow-hidden whitespace-nowrap text-ellipsis'>
                                             {song.artist}
                                         </h2>
                                     </div>

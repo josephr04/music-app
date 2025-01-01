@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { getMixes } from '@api/mixesApi';
 import { getSongs } from '@api/songsApi';
 
@@ -8,9 +8,9 @@ export const MusicProvider = ({ children }) => {
   const [mixes, setMixes] = useState([]);
   const [songs, setSongs] = useState([]);
   const [selectedMix, setSelectedMix] = useState(null);
-  const [audio, setAudio] = useState(null); // Estado para el objeto de audio
-  const [isPlaying, setIsPlaying] = useState(false); // Estado para saber si está sonando
-  const [currentSong, setCurrentSong] = useState(null); // Estado para la canción actual
+  const [audio, setAudio] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState(null);
   const cloudId = "https://d3191cx8othwak.cloudfront.net/";
 
   // Mixes fetch
@@ -33,8 +33,9 @@ export const MusicProvider = ({ children }) => {
           title: data[0].title, 
           artist: data[0].artist, 
           image: cloudId + data[0].image,
-          file: cloudId + data[0].file
         });
+        const newAudio = new Audio(cloudId + data[0].file);
+        setAudio(newAudio);
       }
     };
     fetchSongs();
@@ -52,7 +53,7 @@ export const MusicProvider = ({ children }) => {
   };
 
   // Function to play a song
-  const playSong = (songFile, songTitle, songArtist, songImage) => {
+  const playSong = useCallback((songFile, songTitle, songArtist, songImage) => {
     if (audio) {
       audio.pause();
     }
@@ -67,7 +68,7 @@ export const MusicProvider = ({ children }) => {
     newAudio.onended = () => {
       setIsPlaying(false);
     };
-  };
+  });
 
   // Function to play and pause song
   const playPause = () => {
@@ -79,11 +80,44 @@ export const MusicProvider = ({ children }) => {
     setIsPlaying(!isPlaying);
   };
 
+  // Function to play previous song
+  const playPrevious = () => {
+    if (!currentSong || songs.length === 0) return;
+    const currentIndex = songs.findIndex(song => song.title === currentSong.title);
+    const previousIndex = (currentIndex - 1 + songs.length) % songs.length;
+    setCurrentSong({
+      title: songs[previousIndex].title,
+      artist: songs[previousIndex].artist,
+      image: songs[previousIndex].image,
+      file: songs[previousIndex].file
+    });
+  };
+
+  // Function to play next song
+  const playNext = () => {
+    if (!currentSong || songs.length === 0) return;
+    const currentIndex = songs.findIndex(song => song.title === currentSong.title);
+    const nextIndex = (currentIndex + 1) % songs.length;
+    setCurrentSong({
+      title: songs[nextIndex].title,
+      artist: songs[nextIndex].artist,
+      image: songs[nextIndex].image,
+      file: songs[nextIndex].file
+    });
+  };
+
+  // Effect to play song whenever currentSong changes
+  useEffect(() => {
+    if (currentSong?.file) {
+      playSong(currentSong.file, currentSong.title, currentSong.artist, currentSong.image);
+    }
+  }, [currentSong]);
+
   return (
     <MusicContext.Provider value={{
-      mixes, songs, selectedMix, selectMix, getSongsByMix,
-      playSong, playPause, isPlaying, currentSong,
-      cloudId, setCurrentSong
+      mixes, songs, selectedMix, isPlaying, currentSong,
+      cloudId, playSong, playPause, selectMix,
+      getSongsByMix, setCurrentSong, playPrevious, playNext
     }}>
       {children}
     </MusicContext.Provider>
