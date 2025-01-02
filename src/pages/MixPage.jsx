@@ -68,9 +68,17 @@ export function MixPage({mix}) {
             >
             </div>
             <h1 className="ml-auto mr-auto mt-6 text-3xl font-bold">{mix.name}</h1>
-            <h2 className="ml-auto mr-auto mt-2 text-base font-base text-slate-400">5 songs</h2>
+            <h2 className="ml-auto mr-auto mt-2 text-base font-base text-slate-400">{songs.length} {songs.length === 1 ? 'song' : 'songs'}</h2>
             <div className='flex ml-auto mr-auto mt-4'>
-                <div className='flex items-center justify-center w-16 h-16 bg-green-400 rounded-full'>
+                {/* Play button */}
+                <div className='flex items-center justify-center w-16 h-16 bg-green-400 rounded-full active:bg-green-600'
+                    onClick={() => {
+                        if (songs.length > 0) {
+                            const fSong = songs[0];
+                            playSong(fSong.file, fSong.title, fSong.artist, fSong.image);
+                        }
+                    }}
+                >
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-player-play"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" /></svg>
                 </div>
             </div>

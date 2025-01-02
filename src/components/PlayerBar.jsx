@@ -52,8 +52,8 @@ export function PlayerBar() {
                   mode="mini"
                 />
               </div>
-              <div className='flex space-x-20 items-center justify-center mt-4'>
-                <div onClick={togglePlayerBar} className='flex space-x-6'>
+              <div className='flex space-x-8 items-center justify-center mt-4'>
+                <div onClick={togglePlayerBar} className='flex space-x-6 pr-12'>
                   <div className="w-12 h-12 flex-shrink-0 rounded-md shadow-md transition-all cursor-pointer"
                     style={{
                       backgroundImage: `url(${currentSong.image})`,
@@ -62,7 +62,7 @@ export function PlayerBar() {
                     }}
                   >
                   </div>
-                  <div className='flex flex-col cursor-pointer'>
+                  <div className='flex flex-col cursor-pointer w-44'>
                       <h1 className="text-left text-white text-base font-medium w-44 overflow-hidden whitespace-nowrap text-ellipsis">{currentSong.title}</h1>
                       <h2 className="text-left text-slate-500 text-base w-44 overflow-hidden whitespace-nowrap text-ellipsis">{currentSong.artist}</h2>
                   </div>
