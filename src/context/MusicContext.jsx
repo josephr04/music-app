@@ -5,6 +5,7 @@ import { getSongs } from '@api/songsApi';
 const MusicContext = createContext();
 
 export const MusicProvider = ({ children }) => {
+  const [deskMenuOpen, setDeskMenuOpen] = useState(false);
   const [mixes, setMixes] = useState([]);
   const [songs, setSongs] = useState([]);
   const [selectedMix, setSelectedMix] = useState(null);
@@ -130,6 +131,11 @@ export const MusicProvider = ({ children }) => {
     setCurrentTime(time);
   };
 
+  // Function to toggle menu on desk view
+  const toggleMenu = () => {
+    setDeskMenuOpen(!deskMenuOpen);
+  };
+
   const contextValue = useMemo(() => ({
     mixes,
     songs,
@@ -140,6 +146,9 @@ export const MusicProvider = ({ children }) => {
     playSong,
     currentTime,
     duration,
+    deskMenuOpen,
+    setDeskMenuOpen,
+    toggleMenu,
     playNext,
     playPrevious,
     playPause,

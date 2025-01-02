@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { useMusic } from '@context/MusicContext';
 
 export function MixesSection() {
-  const { mixes, cloudId, getSongsByMix } = useMusic(); // Asegúrate de tener `getSongsByMix`
+  const { mixes, cloudId, getSongsByMix } = useMusic();
   const { pathname } = useLocation();
   const scrollContainerRef = useRef(null);
 
