@@ -9,9 +9,10 @@ export function MixCard() {
     const randomMixes = useMemo(() => getRandomItems(mixes, 3), [mixes]);
 
     return (
-        <div className='flex flex-col p-6 w-full space-y-10'>
+        <div id="album-section" className='flex flex-col p-6 w-full space-y-10'>
             {randomMixes.map((mix, index) => {
                 const songs = useMemo(() => getRandomItems(getSongsByMix(mix.mix), 3), [mix]);
+                const songsCount = getSongsByMix(mix.mix);
                 const colors = ['bg-teal-800', 'bg-cyan-700', 'bg-fuchsia-800'];
 
                 return (
@@ -33,14 +34,14 @@ export function MixCard() {
                                 <h1 className="text-center text-white text-2xl font-medium w-32 overflow-hidden text-ellipsis">
                                     {mix.name}
                                 </h1>
-                                <h2 className='text-center text-slate-800 text-normal'>3 songs</h2>
+                                <h2 className='text-center text-slate-300 text-normal font-medium'>{songsCount.length} {songsCount.length === 1 ? 'song' : 'songs'}</h2>
                             </div>
                         </div>
                         <div className='flex flex-col items-left pt-2 space-y-4'>
                             {songs.map((song) => (
                                 <div key={song.id} className='flex space-x-6 items-center'>
                                     <div
-                                        className='w-16 h-16 flex-shrink-0 rounded-lg bg-green-500 hover:bg-slate-700 shadow-md transition-all'
+                                        className='w-16 h-16 flex-shrink-0 rounded-lg shadow-md transition-all'
                                         style={{
                                             backgroundImage: `url(${cloudId + song.image})`,
                                             backgroundSize: 'cover',

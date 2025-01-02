@@ -7,7 +7,7 @@ import { Artist } from '@components/Artists'
 
 export function Home() {
   return (
-    <div className="min-h-screen flex flex-col text-white">
+    <div id="home-section" className="min-h-screen flex flex-col text-white">
       <Menu />
       <MusicHeader />
       <QuickPicks />
