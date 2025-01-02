@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useMusic } from '@context/MusicContext';
 import { getRandomItems } from '@utils/arrayUtils';
+import { useMemo } from 'react';
 
 export function MixCard() {
     const { mixes, getSongsByMix, cloudId } = useMusic();
 
-    const randomMixes = getRandomItems(mixes, 3);
+    const randomMixes = useMemo(() => getRandomItems(mixes, 3), [mixes]);
 
     return (
         <div className='flex flex-col p-6 w-full space-y-10'>
             {randomMixes.map((mix, index) => {
-                const songs = getRandomItems(getSongsByMix(mix.mix), 3);
+                const songs = useMemo(() => getRandomItems(getSongsByMix(mix.mix), 3), [mix]);
                 const colors = ['bg-teal-800', 'bg-cyan-700', 'bg-fuchsia-800'];
 
                 return (

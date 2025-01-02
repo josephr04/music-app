@@ -8,6 +8,8 @@ export function MixesSection() {
   const { pathname } = useLocation();
   const scrollContainerRef = useRef(null);
 
+  const sortedMixes = [...mixes].sort((a, b) => a.id - b.id);
+
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft = 0;
@@ -17,10 +19,10 @@ export function MixesSection() {
   return (
     <>
       <div 
-      ref={scrollContainerRef} // Asignar la referencia aquí
-      className="px-6 flex overflow-x-auto whitespace-nowrap gap-4"
+        ref={scrollContainerRef}
+        className="px-6 flex overflow-x-auto whitespace-nowrap gap-4"
       >
-        {mixes.map((mix) => (
+        {sortedMixes.map((mix) => (
             <Link key={mix.id} to={`/playlist/${mix.id}`} className="flex flex-col">
               <div
                 className={`w-40 h-40 rounded-lg text-center font-semibold text-white shadow-md cursor-pointer transition-all ${
@@ -38,7 +40,7 @@ export function MixesSection() {
             </Link>
         ))}
       </div>
-        <style>
+      <style>
         {`
           div::-webkit-scrollbar {
             display: none;
