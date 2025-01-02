@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-export function Slider({ value = 0, onChange, mode = 'full' }) {
+export function Slider({ value = 0, onChange, mode = 'full', max = 100 }) {
   const [sliderValue, setSliderValue] = useState(value);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -11,7 +11,7 @@ export function Slider({ value = 0, onChange, mode = 'full' }) {
     setSliderValue(value);
   }, [value]);
 
-  // handle changes
+  // handle changes when the slider is adjusted
   const handleChange = (e) => {
     const newValue = parseFloat(e.target.value);
     setSliderValue(newValue);
@@ -41,37 +41,31 @@ export function Slider({ value = 0, onChange, mode = 'full' }) {
       onMouseLeave={handleMouseLeave}
       onClick={(e) => e.stopPropagation()}
     >
-      {/* background bar */}
+      {/* Background bar */}
       <div
-        className={`absolute w-full ${
-          mode === 'mini' ? 'h-[2px]' : 'h-[4px]'
-        } bg-slate-400 rounded-md`}
+        className={`absolute w-full ${mode === 'mini' ? 'h-[2px]' : 'h-[2px]'} bg-slate-400 rounded-md`}
       ></div>
 
-      {/* progress bar */}
+      {/* Progress bar */}
       <div
-        className={`absolute ${
-          mode === 'mini' ? 'h-[2px]' : 'h-[4px]'
-        } bg-white rounded-md`}
-        style={{ width: `${sliderValue}%` }}
+        className={`absolute ${mode === 'mini' ? 'h-[2px]' : 'h-[2px]'} bg-white rounded-md`}
+        style={{ width: `${(sliderValue / max) * 100}%` }}
       ></div>
 
-      {/* play button */}
+      {/* Play button */}
       {(mode === 'full' || isDragging || isHovered) && (
         <div
-          className={`absolute ${
-            mode === 'mini' ? 'w-3 h-3' : 'w-4 h-4'
-          } bg-white rounded-full shadow-md cursor-pointer`}
-          style={{ left: `${sliderValue}%`, transform: 'translateX(-50%)' }}
+          className={`absolute ${mode === 'mini' ? 'w-3 h-3' : 'w-3 h-3'} bg-white rounded-full shadow-md cursor-pointer`}
+          style={{ left: `${(sliderValue / max) * 100}%`, transform: 'translateX(-50%)' }}
         ></div>
       )}
 
-      {/* Input Invisible */}
+      {/* Invisible Input */}
       <input
         ref={sliderRef}
         type="range"
         min="0"
-        max="100"
+        max={max}
         value={sliderValue}
         onChange={handleChange}
         onMouseDown={handleMouseDown}

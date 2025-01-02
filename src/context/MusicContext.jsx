@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo} from 'react';
 import { getMixes } from '@api/mixesApi';
 import { getSongs } from '@api/songsApi';
 
@@ -11,6 +11,8 @@ export const MusicProvider = ({ children }) => {
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const cloudId = "https://d3191cx8othwak.cloudfront.net/";
 
   // Mixes fetch
@@ -67,6 +69,7 @@ export const MusicProvider = ({ children }) => {
 
     newAudio.onended = () => {
       setIsPlaying(false);
+      playNext();
     };
   });
 
@@ -113,12 +116,42 @@ export const MusicProvider = ({ children }) => {
     }
   }, [currentSong]);
 
+  // Effect to handle time and song duration
+  useEffect(() => {
+    if (audio) {
+      audio.ontimeupdate = () => setCurrentTime(audio.currentTime);
+      audio.onloadedmetadata = () => setDuration(audio.duration);
+    }
+  }, [audio]);
+
+  // Function to change current time when using slider
+  const seekToTime = (time) => {
+    audio.currentTime = time;
+    setCurrentTime(time);
+  };
+
+  const contextValue = useMemo(() => ({
+    mixes,
+    songs,
+    selectedMix,
+    isPlaying,
+    currentSong,
+    cloudId,
+    playSong,
+    currentTime,
+    duration,
+    playNext,
+    playPrevious,
+    playPause,
+    selectMix,
+    getSongsByMix,
+    seekToTime
+  }), [
+    mixes, songs, selectedMix, isPlaying, currentSong, cloudId, playSong
+  ]);
+
   return (
-    <MusicContext.Provider value={{
-      mixes, songs, selectedMix, isPlaying, currentSong,
-      cloudId, playSong, playPause, selectMix,
-      getSongsByMix, setCurrentSong, playPrevious, playNext
-    }}>
+    <MusicContext.Provider value={contextValue}>
       {children}
     </MusicContext.Provider>
   );
