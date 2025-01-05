@@ -1,13 +1,12 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { MixesCarousel } from '@components/MixesCarousel';
+import { MixesCarousel } from '@components/MixesCarousel'
 import { useMusic } from '@context/MusicContext';
-import { Menu } from '@components/Menu';
 
 export function MixPage({mix}) {
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const { cloudId, getSongsByMix, playSong, deskMenuOpen } = useMusic();
+    const { cloudId, getSongsByMix, playSong } = useMusic();
     const [songs, setSongs] = useState([]);
     const [showHeader, setShowHeader] = useState(false);
 
@@ -39,7 +38,7 @@ export function MixPage({mix}) {
     }
 
     return (
-        <div className={`flex flex-col min-h-screen bg-slate-950  text-white ${ deskMenuOpen ? "md:ml-[7px] md:w-[80.9%]" : "md:ml-[5px] md:w-[93.65%]"}`}>
+        <div className="flex flex-col min-h-screen bg-slate-950  text-white">
             <div
                 className={`fixed top-0 left-0 right-0 z-3 h-20 flex items-center px-4 bg-green-300 shadow-md 
                 transition-all duration-200 ease-in-out ${
