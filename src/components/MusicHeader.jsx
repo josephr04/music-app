@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MixesSection } from './Mixes';
+import { MixesCarousel } from './MixesCarousel';
 
 export function MusicHeader() {
   const [selectedGroup, setSelectedGroup] = useState('all');
@@ -36,7 +36,7 @@ export function MusicHeader() {
           ))}
         </div>
         <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Mixed for you</h1>
-        <MixesSection />
+        <MixesCarousel />
       </div>
       <div className="mt-8">
       </div>

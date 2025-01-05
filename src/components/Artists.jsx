@@ -9,7 +9,7 @@ export function Artist() {
       ];
 
     return (
-        <div id="artist-section">
+        <div id="artist-section" className="md:pb-8 pb-28 ml-4">
             <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Artists</h1>
             <div className="px-6 flex overflow-x-auto whitespace-nowrap gap-4">
                 {artists.map((artist) => (

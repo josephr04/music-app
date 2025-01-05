@@ -8,7 +8,7 @@ export function Menu() {
 
     return (
         <>
-        <div className={`hidden md:flex ${deskMenuOpen ? "w-[272px]" : "w-20 mr-1"} `}>
+        <div className={`hidden md:flex ${deskMenuOpen ? "w-[265px]" : "w-20"} `}>
             <DesktopMenu />
         </div>
         <div className="md:hidden">

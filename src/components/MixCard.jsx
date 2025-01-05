@@ -9,7 +9,7 @@ export function MixCard() {
     const randomMixes = useMemo(() => getRandomItems(mixes, 3), [mixes]);
 
     return (
-        <div id="album-section" className='flex flex-col p-6 w-full space-y-10'>
+        <div id="album-section" className='flex flex-col md:flex-row p-6 w-full space-y-10 md:space-y-0 md:space-x-7 md:justify-center'>
             {randomMixes.map((mix, index) => {
                 const songs = useMemo(() => getRandomItems(getSongsByMix(mix.mix), 3), [mix]);
                 const songsCount = getSongsByMix(mix.mix);
@@ -19,7 +19,7 @@ export function MixCard() {
                     <Link
                         key={mix.id}
                         to={`/playlist/${mix.id}`}
-                        className={`flex flex-col w-full h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}
+                        className={`flex flex-col w-full md:w-96 h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}
                     >
                         <div className='flex items-center space-x-8 text-wrap pb-3'>
                             <div
