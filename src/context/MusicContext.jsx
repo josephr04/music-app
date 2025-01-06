@@ -14,6 +14,8 @@ export const MusicProvider = ({ children }) => {
   const [currentSong, setCurrentSong] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.5);
+  const [isMuted, setIsMuted] = useState(false);
   const cloudId = "https://d3191cx8othwak.cloudfront.net/";
 
   // Mixes fetch
@@ -63,6 +65,9 @@ export const MusicProvider = ({ children }) => {
 
     const newSongImage = cloudId + songImage;
     const newAudio = new Audio(cloudId + songFile);
+
+    newAudio.volume = volume;
+
     setAudio(newAudio);
     setCurrentSong({ title: songTitle, artist: songArtist, image: newSongImage });
     newAudio.play();
@@ -72,7 +77,7 @@ export const MusicProvider = ({ children }) => {
       setIsPlaying(false);
       playNext();
     };
-  });
+  },);
 
   // Function to play and pause song
   const playPause = () => {
@@ -136,6 +141,29 @@ export const MusicProvider = ({ children }) => {
     setDeskMenuOpen(!deskMenuOpen);
   };
 
+  // Function to adjust volume
+  const changeVolume = (value) => {
+    if (audio) {
+      audio.volume = value;
+      setVolume(value);
+      setIsMuted(value === 0);
+    }
+  };
+
+  // Function to mute/unmute
+  const toggleMute = () => {
+    const newMuteState = !isMuted;
+    audio.muted = newMuteState;
+    setIsMuted(newMuteState);
+  };
+
+  // Function to set current volume
+  useEffect(() => {
+    if (audio) {
+      audio.volume = volume;
+    }
+  }, [audio, volume]);  
+
   const contextValue = useMemo(() => ({
     mixes,
     songs,
@@ -147,6 +175,10 @@ export const MusicProvider = ({ children }) => {
     currentTime,
     duration,
     deskMenuOpen,
+    volume,
+    isMuted,
+    changeVolume,
+    toggleMute,
     setDeskMenuOpen,
     toggleMenu,
     playNext,

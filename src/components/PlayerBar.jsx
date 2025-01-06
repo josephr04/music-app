@@ -43,7 +43,7 @@ export function PlayerBar() {
             {/* Mini Player */}
             <div className="w-full flex flex-col justify-center">
               <div className="w-full">
-                <Slider 
+                <Slider
                   value={(currentTime / duration) * 100} 
                   max={100}
                   onChange={(val) => {
