@@ -1,4 +1,4 @@
-# Music App Front-end made with React and TailwindCSS
+# Music App Front-end
 
 This is a simple front-end for a music application built with React and styled using TailwindCSS. It allows users to explore different mixes and songs (non-copyrighted). The app is designed to be responsive and provides an intuitive interface for users to interact with.
 
