@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ReactLogo, TailwindLogo } from '@components/Logos';
 
 export function MobileMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,7 +94,8 @@ export function MobileMenu() {
             {/* X icon */}
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-x"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M18 6l-12 12" /> <path d="M6 6l12 12" /></svg>
           </button>
-          <h2 className="flex items-center text-xl font-bold ml-8">YMusic<svg xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-brand-deezer ml-3"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 16.5h2v.5h-2z" /><path d="M8 16.5h2.5v.5h-2.5z" /><path d="M16 17h-2.5v-.5h2.5z" /><path d="M21.5 17h-2.5v-.5h2.5z" /><path d="M21.5 13h-2.5v.5h2.5z" /><path d="M21.5 9.5h-2.5v.5h2.5z" /><path d="M21.5 6h-2.5v.5h2.5z" /><path d="M16 13h-2.5v.5h2.5z" /><path d="M8 13.5h2.5v-.5h-2.5z" /><path d="M8 9.5h2.5v.5h-2.5z" /></svg></h2>
+          <h2 className="flex items-center text-xl font-bold ml-8">YMusic</h2>
+          <svg xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-brand-deezer ml-3 mt-1"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 16.5h2v.5h-2z" /><path d="M8 16.5h2.5v.5h-2.5z" /><path d="M16 17h-2.5v-.5h2.5z" /><path d="M21.5 17h-2.5v-.5h2.5z" /><path d="M21.5 13h-2.5v.5h2.5z" /><path d="M21.5 9.5h-2.5v.5h2.5z" /><path d="M21.5 6h-2.5v.5h2.5z" /><path d="M16 13h-2.5v.5h2.5z" /><path d="M8 13.5h2.5v-.5h-2.5z" /><path d="M8 9.5h2.5v.5h-2.5z" /></svg>
         </div>
 
         {/* Sections */}
@@ -110,8 +112,16 @@ export function MobileMenu() {
               </li>
             ))}
           </ul>
-          <h2 className='text-xs text-center mb-2 mt-auto'>© Copyright 2024. Made by Joseph Rosas.</h2>
-          <a href="https://github.com/josephr04/music-app.git" className='active:bg-slate-800 rounded-full p-1 cursor-pointer mb-4'>
+          <div className="flex flex-col mt-auto items-center">
+            <div className='flex space-x-4'>
+              <ReactLogo />
+              <TailwindLogo />
+            </div>
+            <div className='w-full h-[0.5px] bg-white mb-2'></div>
+            <p className="text-sm text-gray-400 mt-2">Built with React & TailwindCSS</p>
+          </div>
+          <h2 className='text-xs text-center mb-2 mt-20'>© Copyright 2024. Made by <b>Joseph Rosas.</b></h2>
+          <a href="https://github.com/josephr04/music-app.git" target='_blank' className='active:bg-slate-800 rounded-full p-1 cursor-pointer mb-4'>
             <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
           </a>
         </div>
