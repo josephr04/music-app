@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MixesCarousel } from './MixesCarousel';
 
 export function MusicHeader() {
   const [selectedGroup, setSelectedGroup] = useState('all');
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const musicGroups = [
     { id: 'all', name: 'All', image: 'src/assets/images/all.webp' },
@@ -35,8 +44,10 @@ export function MusicHeader() {
             </button>
           ))}
         </div>
-        <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Mixed for you</h1>
-        <MixesCarousel />
+        <h1 className="text-white text-[1.44rem] p-4 ml-2 text-left font-semibold">Mixes</h1>
+        <div className={`transition-opacity duration-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <MixesCarousel />
+        </div>
       </div>
       <div className="mt-8">
       </div>

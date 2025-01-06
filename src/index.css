@@ -34,7 +34,7 @@ html, body, #root {
 .loadingSection::-webkit-scrollbar {
     display: none;
 }
-
+  
 /* React Logo */
 .container{
     width:60px;
@@ -95,3 +95,16 @@ html, body, #root {
         transform:rotate(360deg);
     }
 }
+ /* Component transitions */
+.transition-opacity {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+  

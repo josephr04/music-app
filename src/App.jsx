@@ -17,7 +17,7 @@ export function App() {
 
   return (
     <MusicProvider>
-      {loading ? <LoadingScreen /> : <AppRoutes />}
+      {loading ? <div className='overflow-hidden'><LoadingScreen /></div> : <AppRoutes />}
     </MusicProvider>
   );
 }
