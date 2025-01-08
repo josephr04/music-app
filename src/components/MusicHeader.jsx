@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { MixesCarousel } from './MixesCarousel';
+import allImage from '@assets/images/all.webp';
+import energizeImage from '@assets/images/energize.webp';
+import workoutImage from '@assets/images/workout.webp';
+import focusImage from '@assets/images/focus.webp';
+import chillImage from '@assets/images/chill.webp';
 
 export function MusicHeader() {
   const [selectedGroup, setSelectedGroup] = useState('all');
@@ -14,12 +19,12 @@ export function MusicHeader() {
   }, []);
 
   const musicGroups = [
-    { id: 'all', name: 'All', image: 'src/assets/images/all.webp' },
-    { id: 'energize', name: 'Energize', image: 'src/assets/images/energize.webp' },
-    { id: 'workout', name: 'Workout', image: 'src/assets/images/workout.webp' },
-    { id: 'focus', name: 'Focus', image: 'src/assets/images/focus.webp' },
-    { id: 'chill', name: 'Chill', image: 'src/assets/images/chill.webp' },
-  ];
+    { id: 'all', name: 'All', image: allImage },
+    { id: 'energize', name: 'Energize', image: energizeImage },
+    { id: 'workout', name: 'Workout', image: workoutImage },
+    { id: 'focus', name: 'Focus', image: focusImage },
+    { id: 'chill', name: 'Chill', image: chillImage },
+  ];  
   
   const handleGroupChange = (groupId) => {
     setSelectedGroup(groupId);

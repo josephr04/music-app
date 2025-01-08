@@ -1,3 +1,5 @@
+import tailwindLogo from '@assets/images/tailwind-logo.svg';
+
 export function ReactLogo() {
     return (
         <a href="https://react.dev" target="_blank" className="container" >
@@ -11,7 +13,7 @@ export function ReactLogo() {
 export function TailwindLogo() {
     return(
         <a href="https://tailwindcss.com" target="_blank">
-            <img className="w-16 h-16" src="src\assets\images\tailwind-logo.svg" alt="" />
+            <img className="w-16 h-16" src={tailwindLogo} alt="Tailwind Logo" />
         </a>
     );
 }

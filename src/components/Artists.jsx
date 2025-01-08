@@ -1,11 +1,15 @@
+import alanWalkerImg from '@assets/images/artists/alan-walker.webp';
+import theWeekndImg from '@assets/images/artists/the-weeknd.webp';
+import mitskiImg from '@assets/images/artists/mitski.webp';
+import inabakumoriImg from '@assets/images/artists/inabakumori.webp';
 
 export function Artist() {
 
     const artists = [
-        { id: 1, name: "Alan Walker", image: "src/assets/images/artists/alan-walker.webp"},
-        { id: 2, name: "The Weeknd", image: "src/assets/images/artists/the-weeknd.webp" },
-        { id: 3, name: "Mitski", image: "src/assets/images/artists/mitski.webp" },
-        { id: 4, name: "Inabakumori", image: "src/assets/images/artists/inabakumori.webp" }
+        { id: 1, name: "Alan Walker", image: alanWalkerImg },
+        { id: 2, name: "The Weeknd", image: theWeekndImg },
+        { id: 3, name: "Mitski", image: mitskiImg },
+        { id: 4, name: "Inabakumori", image: inabakumoriImg }
       ];
 
     return (
