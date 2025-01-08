@@ -54,7 +54,7 @@ export function PlayerBar() {
                 />
               </div>
               <div className='flex space-x-8 md:space-x-0 items-center justify-center md:justify-between mt-4 md:mx-4'>
-                <div onClick={togglePlayerBar} className='flex space-x-6 pr-12 md:pr-0'>
+                <div onClick={togglePlayerBar} className='flex space-x-6 pr-12 md:pr-0 sm:ml-10 sm:pr-4'>
                   <div className="w-12 h-12 flex-shrink-0 rounded-md shadow-md transition-all cursor-pointer"
                     style={{
                       backgroundImage: `url(${currentSong.image})`,
@@ -74,7 +74,7 @@ export function PlayerBar() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" className="icon icon-tabler icons-tabler-filled icon-tabler-player-skip-back cursor-pointer"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7a1 1 0 0 0 1.504 -.864v-14a1 1 0 0 0 -1.504 -.864z" /><path d="M4 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z" /></svg>
                   </div>
                   {/* play/pause button */}
-                  <div className=''>
+                  <div className='sm:mr-8'>
                     <PlayPauseButton expanded={expanded} fill="white" iconSize={24} 
                       onToggle={(e) => {
                         e.stopPropagation();
