@@ -21,7 +21,7 @@ export function MixCard() {
                         to={`/playlist/${mix.id}`}
                         className={`flex flex-col w-full md:w-96 h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}
                     >
-                        <div className='flex items-center space-x-8 text-wrap pb-3'>
+                        <div className='flex items-center space-x-8 sm:space-x-2 text-wrap pb-3'>
                             <div
                                 className='w-36 h-36 rounded-lg shadow-md flex-shrink-0'
                                 style={{
@@ -31,7 +31,7 @@ export function MixCard() {
                                 }}
                             ></div>
                             <div className='flex flex-col'>
-                                <h1 className="text-center text-white text-2xl font-medium w-32 overflow-hidden text-ellipsis">
+                                <h1 className="text-center text-white text-2xl font-medium w-32 sm:w-28 overflow-hidden text-wrap text-ellipsis">
                                     {mix.name}
                                 </h1>
                                 <h2 className='text-center text-slate-300 text-normal font-medium'>{songsCount.length} {songsCount.length === 1 ? 'song' : 'songs'}</h2>
