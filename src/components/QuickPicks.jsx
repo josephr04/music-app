@@ -63,7 +63,7 @@ export function QuickPicks() {
                     <div
                         key={song.id}
                         onClick={() => playSong(song.file, song.title, song.artist, song.image)}
-                        className={`snap-start flex items-center cursor-pointer space-x-4 mr-24 md:mr-0 md:p-2 ${!deskMenuOpen ? 'md:pr-44' : 'md:pr-28'} md:hover:bg-slate-800 md:rounded-md`}
+                        className={`snap-start flex items-center cursor-pointer space-x-4 mr-24 md:mr-0 md:p-2 sm:mr-12 ${!deskMenuOpen ? 'md:pr-44' : 'md:pr-28'} md:hover:bg-slate-800 md:rounded-md`}
                     >
                         <div
                             className="ml-7 w-16 h-16 flex-shrink-0 rounded-lg hover:bg-slate-700 shadow-md transition-all md:ml-2"
