@@ -105,11 +105,11 @@ export function PlayerBar() {
             <div className="w-full h-full flex flex-col items-center justify-center text-white">
               <button
                 onClick={togglePlayerBar}
-                className="absolute md:hidden top-8 left-4 text-white text-2xl rounded-full p-2 hover:bg-gray-600 transition-all"
+                className="absolute md:hidden top-8 sm:top-12 left-4 text-white text-2xl rounded-full p-2 hover:bg-gray-600 transition-all"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
               </button>
-              <div className="w-80 h-80 mt-28 bg-gray-700 rounded-lg shadow-md flex items-center justify-center"
+              <div className="w-80 h-80 mt-28 sm:w-72 sm:h-72 bg-gray-700 rounded-lg shadow-md flex items-center justify-center"
                 style={{
                   backgroundImage: `url(${currentSong.image})`,
                   backgroundSize: 'cover',
@@ -117,11 +117,11 @@ export function PlayerBar() {
                 }} 
               >
               </div>
-              <div className='w-80 flex flex-col mt-8' >
+              <div className='w-80 flex flex-col mt-8 sm:ml-8 sm:mt-6' >
                 <h1 className="text-2xl font-bold overflow-hidden text-ellipsis">{currentSong.title}</h1>
                 <h1 className="text-lg text-slate-400 overflow-hidden text-ellipsis">{currentSong.artist}</h1>
               </div>
-              <div className="w-[78%]	h-2 mt-4">
+              <div className="w-[78%]	h-2 mt-4 sm:w-[80%]">
                 <Slider 
                   value={(currentTime / duration) * 100} 
                   max={100}
@@ -132,7 +132,7 @@ export function PlayerBar() {
                   mode='full'
                 />
               </div>
-              <div className="flex items-center justify-between w-[78%]">
+              <div className="flex items-center justify-between w-[78%] sm:w-[80%]">
                 <span className="text-[15px] text-slate-400">{formatTime(currentTime)}</span>
                 <span className="text-[15px] text-slate-400">{formatTime(duration)}</span>
               </div>
