@@ -71,7 +71,7 @@ export function MixPage({mix}) {
             <h2 className="ml-auto mr-auto mt-2 text-base font-base text-slate-400">{songs.length} {songs.length === 1 ? 'song' : 'songs'}</h2>
             <div className='flex ml-auto mr-auto mt-4'>
                 {/* Play button */}
-                <div className='flex items-center justify-center w-16 h-16 bg-green-400 rounded-full active:bg-green-600'
+                <div className='flex items-center justify-center w-16 h-16 bg-green-400 rounded-full sm:active:bg-green-600 md:hover:bg-green-600 md:cursor-pointer'
                     onClick={() => {
                         if (songs.length > 0) {
                             const fSong = songs[0];
@@ -84,7 +84,7 @@ export function MixPage({mix}) {
             </div>
             <div className='flex flex-col ml-7 mr-auto mt-8 space-y-5'>
                 {songs.map((song) =>(
-                    <div key={song.id} onClick={() => playSong(song.file, song.title, song.artist, song.image)} className='flex space-x-6 items-center'>
+                    <div key={song.id} onClick={() => playSong(song.file, song.title, song.artist, song.image)} className='flex space-x-6 items-center md:cursor-pointer'>
                         <div className='w-16 h-16 flex-shrink-0 rounded-lg hover:bg-slate-700 shadow-md transition-all'
                             style={{
                                 backgroundImage: `url(${cloudId + song.image})`,
