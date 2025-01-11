@@ -121,7 +121,7 @@ export function PlayerBar() {
                 <h1 className="text-2xl font-bold overflow-hidden text-ellipsis">{currentSong.title}</h1>
                 <h1 className="text-lg text-slate-400 overflow-hidden text-ellipsis">{currentSong.artist}</h1>
               </div>
-              <div className="w-[78%]	h-2 mt-4 sm:w-[80%]">
+              <div className="w-[78%]	h-2 mt-10 sm:w-[80%]">
                 <Slider 
                   value={(currentTime / duration) * 100} 
                   max={100}
