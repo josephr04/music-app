@@ -73,7 +73,7 @@ export function SongsCarousel() {
                     }}
                 >
                 </div>
-                <h1 className="text-left mt-2 text-white text-base font-medium">
+                <h1 className="text-left mt-2 text-white text-base font-medium overflow-hidden text-wrap text-ellipsis">
                     <span>{`${song.title}`}</span>
                 </h1>
                 <h2 className="text-left text-slate-500 text-sm max-w-[160px] line-clamp-2 overflow-hidden">
