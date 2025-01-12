@@ -19,9 +19,9 @@ export function MixCard() {
                     <Link
                         key={mix.id}
                         to={`/playlist/${mix.id}`}
-                        className={`flex flex-col w-full md:w-96 h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}
+                        className={`flex flex-col w-full md:w-96 min-w-80 h-auto p-8 rounded-2xl ${colors[index % colors.length]}`}
                     >
-                        <div className='flex items-center md:space-x-8 sm:space-x-2 text-wrap pb-3'>
+                        <div className='flex items-center md:space-x-8 sm:space-x-2 text-wrap pb-3 w-full justify-between'>
                             <div
                                 className='w-36 h-36 rounded-lg shadow-md flex-shrink-0'
                                 style={{
@@ -30,7 +30,7 @@ export function MixCard() {
                                     backgroundPosition: 'center'
                                 }}
                             ></div>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col justify-center items-center w-full'>
                                 <h1 className="text-center text-white text-2xl font-medium w-32 sm:w-28 overflow-hidden text-wrap text-ellipsis">
                                     {mix.name}
                                 </h1>
